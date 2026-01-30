@@ -438,8 +438,8 @@ This document outlines the current functionality, planned features, and ongoing 
 
 Contact RSP Management Solutions:
 - **Website:** [https://consulting.rspmgmt.com](https://consulting.rspmgmt.com)
-- **Email:** [contact details needed]
-- **Phone:** [contact details needed]
+- **Email:** rpretzer@gmail.com
+- **Phone:** (440) 650-7414
 
 ---
 
