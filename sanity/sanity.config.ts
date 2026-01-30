@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Jodi Photography',
 
-  projectId: 'YOUR_PROJECT_ID', // Replace with your Sanity project ID
+  projectId: 'p3yznzid',
   dataset: 'production',
 
   plugins: [
