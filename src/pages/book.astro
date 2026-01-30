@@ -480,6 +480,44 @@ const base = import.meta.env.BASE_URL;
       grid-template-columns: 2fr 1fr;
     }
   }
+
+  /* Dark Mode - Manual override */
+  html[data-theme='dark'] input,
+  html[data-theme='dark'] textarea,
+  html[data-theme='dark'] select {
+    background-color: var(--color-neutral-700);
+    color: var(--color-text-primary);
+    border-color: var(--color-neutral-600);
+  }
+
+  html[data-theme='dark'] input::placeholder,
+  html[data-theme='dark'] textarea::placeholder {
+    color: var(--color-neutral-400);
+  }
+
+  html[data-theme='dark'] .submit-btn:hover:not(:disabled) {
+    background-color: var(--color-accent-700);
+  }
+
+  /* Dark Mode - System preference fallback */
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme]) input,
+    html:not([data-theme]) textarea,
+    html:not([data-theme]) select {
+      background-color: var(--color-neutral-700);
+      color: var(--color-text-primary);
+      border-color: var(--color-neutral-600);
+    }
+
+    html:not([data-theme]) input::placeholder,
+    html:not([data-theme]) textarea::placeholder {
+      color: var(--color-neutral-400);
+    }
+
+    html:not([data-theme]) .submit-btn:hover:not(:disabled) {
+      background-color: var(--color-accent-700);
+    }
+  }
 </style>
 
 <script>
