@@ -188,7 +188,8 @@ const base = import.meta.env.BASE_URL;
 
   .contact-grid {
     display: grid;
-    gap: var(--spacing-12);
+    gap: var(--spacing-8);
+    grid-template-columns: 1fr;
   }
 
   /* Contact Cards */
@@ -253,6 +254,7 @@ const base = import.meta.env.BASE_URL;
   .info-section {
     display: grid;
     gap: var(--spacing-6);
+    grid-template-columns: 1fr;
   }
 
   .info-card {
@@ -383,18 +385,29 @@ const base = import.meta.env.BASE_URL;
   }
 
   /* Responsive */
+  @media (min-width: 640px) {
+    .info-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (min-width: 768px) {
     .contact-cards {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .contact-grid {
-      grid-template-columns: 2fr 1fr;
-      gap: var(--spacing-8);
-    }
-
     .page-title {
       font-size: var(--font-size-5xl);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .contact-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .info-section {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
