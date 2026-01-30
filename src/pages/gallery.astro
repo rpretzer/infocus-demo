@@ -331,21 +331,22 @@ const placeholderImages = [
   /* Dark Mode */
   @media (prefers-color-scheme: dark) {
     .filter-btn {
-      background-color: var(--color-neutral-700);
-      color: var(--color-text-secondary);
-      border-color: var(--color-neutral-600);
+      background-color: var(--color-neutral-700) !important;
+      color: var(--color-neutral-300) !important;
+      border-color: var(--color-neutral-600) !important;
     }
 
     .filter-btn:hover {
-      background-color: var(--color-neutral-600);
-      color: var(--color-text-primary);
-      border-color: var(--color-neutral-500);
+      background-color: var(--color-neutral-600) !important;
+      color: var(--color-neutral-50) !important;
+      border-color: var(--color-neutral-500) !important;
     }
 
-    .filter-btn-active {
-      background-color: var(--color-accent-600);
-      color: #ffffff;
-      border-color: var(--color-accent-600);
+    .filter-btn-active,
+    .filter-btn[aria-pressed="true"] {
+      background-color: var(--color-accent-600) !important;
+      color: #ffffff !important;
+      border-color: var(--color-accent-600) !important;
     }
 
     .cta-title {
