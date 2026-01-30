@@ -104,9 +104,9 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-  /* Hero Section */
+  /* Hero Section - Warm, inviting */
   .hero {
-    background: linear-gradient(to bottom, var(--color-neutral-50), var(--color-surface));
+    background: var(--color-primary-50); /* Soft teal background */
     padding: var(--spacing-16) 0;
   }
 
@@ -133,7 +133,8 @@ import Layout from '../layouts/Layout.astro';
 
   .hero-accent {
     display: block;
-    color: var(--color-accent-600);
+    color: var(--color-primary-600); /* Deep teal accent */
+    font-family: var(--font-family-display);
   }
 
   .hero-description {
@@ -210,20 +211,24 @@ import Layout from '../layouts/Layout.astro';
   .service-card {
     text-align: center;
     padding: var(--spacing-8);
-    background-color: var(--color-neutral-50);
-    border-radius: var(--radius-xl);
-    transition: transform var(--transition-base);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-2xl); /* More organic */
+    box-shadow: var(--shadow-base);
+    transition: all var(--transition-base);
+    border: 2px solid var(--color-neutral-200);
   }
 
   .service-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-300); /* Teal on hover */
   }
 
   .service-icon {
     width: 3rem;
     height: 3rem;
     margin: 0 auto var(--spacing-4);
-    color: var(--color-accent-600);
+    color: var(--color-accent-500); /* Warm coral icons */
   }
 
   .service-icon svg {
@@ -245,10 +250,10 @@ import Layout from '../layouts/Layout.astro';
     margin: 0;
   }
 
-  /* Call to Action Section */
+  /* Call to Action Section - Concert energy */
   .cta {
     padding: var(--spacing-20) 0;
-    background-color: var(--color-accent-600);
+    background-color: var(--color-primary-700); /* Deep teal energy */
     color: var(--color-text-inverse);
   }
 
@@ -272,44 +277,51 @@ import Layout from '../layouts/Layout.astro';
     opacity: 0.95;
   }
 
-  /* Buttons */
+  /* Buttons - Organic, flowing shapes */
   .btn {
     display: inline-block;
-    padding: var(--spacing-3) var(--spacing-6);
-    font-size: var(--font-size-base);
+    padding: var(--spacing-4) var(--spacing-8);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-semibold);
+    font-family: var(--font-family-display);
     text-decoration: none;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl); /* More organic */
     transition: all var(--transition-base);
     border: 2px solid transparent;
+    letter-spacing: -0.01em;
   }
 
   .btn-primary {
-    background-color: var(--color-accent-600);
+    background-color: var(--color-accent-600); /* Warm coral */
     color: var(--color-text-inverse);
   }
 
   .btn-primary:hover {
     background-color: var(--color-accent-700);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 
   .btn-secondary {
     background-color: transparent;
-    color: var(--color-accent-600);
-    border-color: var(--color-accent-600);
+    color: var(--color-primary-700); /* Teal outline */
+    border-color: var(--color-primary-600);
   }
 
   .btn-secondary:hover {
-    background-color: var(--color-accent-50);
+    background-color: var(--color-primary-50);
+    border-color: var(--color-primary-700);
   }
 
   .btn-primary-inverse {
     background-color: var(--color-surface);
     color: var(--color-accent-600);
+    border-color: var(--color-surface);
   }
 
   .btn-primary-inverse:hover {
-    background-color: var(--color-neutral-100);
+    background-color: var(--color-accent-50);
+    transform: translateY(-2px);
   }
 
   /* Responsive */
