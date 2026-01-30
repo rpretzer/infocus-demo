@@ -247,9 +247,29 @@
     background-color: var(--color-neutral-700);
   }
 
-  /* Ensure headings remain visible */
-  h1, h2, h3, h4, h5, h6 {
+  /* Ensure headings remain visible on light surfaces */
+  .hero h1,
+  .hero h2,
+  .services h2,
+  .page-header h1,
+  .page-header h2,
+  main > section:not(.cta) h1,
+  main > section:not(.cta) h2,
+  main > section:not(.cta) h3,
+  .card h3,
+  .service-card h3,
+  .contact-card h2,
+  .info-card h2,
+  .legal-section h2,
+  .legal-section h3 {
     color: var(--color-primary-300);
+  }
+
+  /* Headings on dark backgrounds stay light */
+  .cta h1,
+  .cta h2,
+  .footer h3 {
+    color: var(--color-text-inverse);
   }
 
   /* Hero accent in dark mode */
