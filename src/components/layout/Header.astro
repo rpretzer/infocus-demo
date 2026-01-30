@@ -36,21 +36,6 @@ function isActive(href: string) {
         <span class="brand-text">In Focus with Jodi</span>
       </a>
 
-      <!-- Theme Toggle Button -->
-      <button
-        type="button"
-        class="theme-toggle"
-        aria-label="Toggle dark mode"
-        id="theme-toggle"
-      >
-        <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-        <svg class="moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-      </button>
-
       <!-- Mobile Menu Button -->
       <button
         type="button"
@@ -83,6 +68,21 @@ function isActive(href: string) {
               </a>
             </li>
           ))}
+          <li>
+            <button
+              type="button"
+              class="theme-toggle"
+              aria-label="Toggle dark mode"
+              id="theme-toggle"
+            >
+              <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <svg class="moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -101,6 +101,21 @@ function isActive(href: string) {
             </a>
           </li>
         ))}
+        <li>
+          <button
+            type="button"
+            class="theme-toggle mobile-theme-toggle"
+            aria-label="Toggle dark mode"
+          >
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <svg class="moon-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span class="theme-toggle-text"></span>
+          </button>
+        </li>
       </ul>
     </nav>
   </div>
@@ -262,6 +277,17 @@ function isActive(href: string) {
   .mobile-nav-link-active {
     color: var(--color-accent-600);
     background-color: var(--color-accent-50);
+  }
+
+  .mobile-theme-toggle {
+    width: 100%;
+    justify-content: flex-start;
+    padding: var(--spacing-3) var(--spacing-4);
+    gap: var(--spacing-3);
+  }
+
+  .theme-toggle-text {
+    font-weight: var(--font-weight-medium);
   }
 
   /* Dark Mode - Manual override */
@@ -456,10 +482,8 @@ function isActive(href: string) {
   }
 
   // Theme toggle functionality
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggles = document.querySelectorAll('.theme-toggle');
   const html = document.documentElement;
-  const sunIcon = themeToggle?.querySelector('.sun-icon');
-  const moonIcon = themeToggle?.querySelector('.moon-icon');
 
   // Check for saved theme preference or default to system preference
   const getThemePreference = () => {
@@ -473,24 +497,35 @@ function isActive(href: string) {
     html.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
 
-    if (sunIcon && moonIcon) {
-      if (theme === 'dark') {
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-      } else {
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
+    // Update all toggle buttons
+    themeToggles.forEach(toggle => {
+      const sunIcon = toggle.querySelector('.sun-icon');
+      const moonIcon = toggle.querySelector('.moon-icon');
+      const text = toggle.querySelector('.theme-toggle-text');
+
+      if (sunIcon && moonIcon) {
+        if (theme === 'dark') {
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+          if (text) text.textContent = 'Light Mode';
+        } else {
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+          if (text) text.textContent = 'Dark Mode';
+        }
       }
-    }
+    });
   };
 
   // Initialize theme on load
   setTheme(getThemePreference());
 
-  // Toggle theme on button click
-  themeToggle?.addEventListener('click', () => {
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
+  // Toggle theme on button click (for all toggle buttons)
+  themeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      setTheme(newTheme);
+    });
   });
 </script>
