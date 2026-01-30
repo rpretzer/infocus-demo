@@ -161,8 +161,127 @@
   --container-2xl: 1536px;
 }
 
-/* Dark Mode - Respects system preferences */
+/* Dark Mode - Manual override via data-theme attribute */
+html[data-theme='dark'] {
+  /* Application Colors - Dark Mode */
+  --color-background: var(--color-neutral-900);    /* Deep espresso background */
+  --color-surface: var(--color-neutral-800);       /* Dark earth surface */
+  --color-text-primary: var(--color-neutral-50);   /* Warm cream text */
+  --color-text-secondary: var(--color-neutral-300); /* Natural beige text */
+  --color-text-inverse: var(--color-neutral-900);  /* Dark text for light backgrounds */
+  --color-border: var(--color-neutral-700);        /* Rich soil borders */
+  --color-border-focus: var(--color-primary-400);  /* Brighter teal for visibility */
+
+  /* Adjusted semantic colors for dark mode */
+  --color-success: #22c55e;  /* Brighter green */
+  --color-error: #ff7a52;    /* Warm coral (already bright) */
+  --color-warning: #ffab8f;  /* Lighter coral */
+  --color-info: var(--color-primary-400); /* Brighter teal */
+
+  /* Dark mode specific adjustments */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.6);
+}
+
+html[data-theme='dark'] .hero {
+  background: var(--color-neutral-800) !important;
+}
+
+html[data-theme='dark'] .page-header {
+  background: var(--color-neutral-800) !important;
+}
+
+html[data-theme='dark'] .cta {
+  background-color: var(--color-primary-800) !important;
+}
+
+html[data-theme='dark'] .service-card {
+  background-color: var(--color-neutral-700);
+  border-color: var(--color-neutral-600);
+}
+
+html[data-theme='dark'] .service-card:hover {
+  border-color: var(--color-primary-500);
+}
+
+html[data-theme='dark'] .footer {
+  background-color: #000000;
+}
+
+html[data-theme='dark'] input,
+html[data-theme='dark'] textarea,
+html[data-theme='dark'] select {
+  background-color: var(--color-neutral-700);
+  color: var(--color-text-primary);
+  border-color: var(--color-neutral-600);
+}
+
+html[data-theme='dark'] input::placeholder,
+html[data-theme='dark'] textarea::placeholder {
+  color: var(--color-neutral-400);
+}
+
+html[data-theme='dark'] input:focus,
+html[data-theme='dark'] textarea:focus,
+html[data-theme='dark'] select:focus {
+  background-color: var(--color-neutral-600);
+  border-color: var(--color-primary-400);
+}
+
+html[data-theme='dark'] .card,
+html[data-theme='dark'] .contact-card,
+html[data-theme='dark'] .info-card,
+html[data-theme='dark'] .service-card,
+html[data-theme='dark'] .legal-section,
+html[data-theme='dark'] .table-of-contents {
+  background-color: var(--color-neutral-700);
+}
+
+html[data-theme='dark'] .hero h1,
+html[data-theme='dark'] .hero h2,
+html[data-theme='dark'] .services h2,
+html[data-theme='dark'] .page-header h1,
+html[data-theme='dark'] .page-header h2,
+html[data-theme='dark'] main > section:not(.cta) h1,
+html[data-theme='dark'] main > section:not(.cta) h2,
+html[data-theme='dark'] main > section:not(.cta) h3,
+html[data-theme='dark'] .card h3,
+html[data-theme='dark'] .service-card h3,
+html[data-theme='dark'] .contact-card h2,
+html[data-theme='dark'] .info-card h2,
+html[data-theme='dark'] .legal-section h2,
+html[data-theme='dark'] .legal-section h3 {
+  color: var(--color-primary-300);
+}
+
+html[data-theme='dark'] .cta h1,
+html[data-theme='dark'] .cta h2,
+html[data-theme='dark'] .footer h3 {
+  color: var(--color-text-inverse);
+}
+
+html[data-theme='dark'] .hero-accent {
+  color: var(--color-primary-400);
+}
+
+html[data-theme='dark'] .filter-button {
+  background-color: var(--color-neutral-700);
+  color: var(--color-text-secondary);
+}
+
+html[data-theme='dark'] .filter-button:hover,
+html[data-theme='dark'] .filter-button.active {
+  background-color: var(--color-primary-700);
+  color: var(--color-text-inverse);
+}
+
+/* Dark Mode - Respects system preferences (fallback) */
 @media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
   :root {
     /* Application Colors - Dark Mode */
     --color-background: var(--color-neutral-900);    /* Deep espresso background */
@@ -283,10 +402,11 @@
     color: var(--color-text-secondary);
   }
 
-  .filter-button:hover,
-  .filter-button.active {
+  html:not([data-theme]) .filter-button:hover,
+  html:not([data-theme]) .filter-button.active {
     background-color: var(--color-primary-700);
     color: var(--color-text-inverse);
+  }
   }
 }
 
