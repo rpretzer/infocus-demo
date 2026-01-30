@@ -53,8 +53,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
 
-    <!-- Accessibility -->
-    <meta name="theme-color" content="#ffffff" />
+    <!-- Accessibility & Color Scheme -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a120b" media="(prefers-color-scheme: dark)" />
   </head>
   <body>
     <SkipLink />

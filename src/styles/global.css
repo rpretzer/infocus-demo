@@ -64,7 +64,7 @@
   --color-warning: #ff7a52;           /* Warm coral */
   --color-info: var(--color-primary-600); /* Teal */
 
-  /* Application Colors - Warm, artistic foundation */
+  /* Application Colors - Warm, artistic foundation (Light Mode) */
   --color-background: var(--color-neutral-50);  /* Warm cream base */
   --color-surface: #ffffff;
   --color-text-primary: var(--color-neutral-900);    /* Deep espresso */
@@ -161,6 +161,121 @@
   --container-2xl: 1536px;
 }
 
+/* Dark Mode - Respects system preferences */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Application Colors - Dark Mode */
+    --color-background: var(--color-neutral-900);    /* Deep espresso background */
+    --color-surface: var(--color-neutral-800);       /* Dark earth surface */
+    --color-text-primary: var(--color-neutral-50);   /* Warm cream text */
+    --color-text-secondary: var(--color-neutral-300); /* Natural beige text */
+    --color-text-inverse: var(--color-neutral-900);  /* Dark text for light backgrounds */
+    --color-border: var(--color-neutral-700);        /* Rich soil borders */
+    --color-border-focus: var(--color-primary-400);  /* Brighter teal for visibility */
+
+    /* Adjusted semantic colors for dark mode */
+    --color-success: #22c55e;  /* Brighter green */
+    --color-error: #ff7a52;    /* Warm coral (already bright) */
+    --color-warning: #ffab8f;  /* Lighter coral */
+    --color-info: var(--color-primary-400); /* Brighter teal */
+
+    /* Dark mode specific adjustments */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.6);
+  }
+
+  /* Dark mode specific overrides for accent sections */
+  .hero {
+    background: var(--color-neutral-800) !important;
+  }
+
+  .page-header {
+    background: var(--color-neutral-800) !important;
+  }
+
+  .cta {
+    background-color: var(--color-primary-800) !important;
+  }
+
+  /* Service cards in dark mode */
+  .service-card {
+    background-color: var(--color-neutral-700);
+    border-color: var(--color-neutral-600);
+  }
+
+  .service-card:hover {
+    border-color: var(--color-primary-500);
+  }
+
+  /* Footer already dark, adjust for even darker background */
+  .footer {
+    background-color: #000000;
+  }
+
+  /* Form inputs in dark mode */
+  input,
+  textarea,
+  select {
+    background-color: var(--color-neutral-700);
+    color: var(--color-text-primary);
+    border-color: var(--color-neutral-600);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-neutral-400);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    background-color: var(--color-neutral-600);
+    border-color: var(--color-primary-400);
+  }
+
+  /* Cards and surfaces */
+  .card,
+  .contact-card,
+  .info-card,
+  .service-card,
+  .legal-section,
+  .table-of-contents {
+    background-color: var(--color-neutral-700);
+  }
+
+  /* Ensure headings remain visible */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primary-300);
+  }
+
+  /* Hero accent in dark mode */
+  .hero-accent {
+    color: var(--color-primary-400);
+  }
+
+  /* Image placeholders */
+  .hero-image-placeholder {
+    background-color: var(--color-neutral-700);
+    color: var(--color-neutral-500);
+  }
+
+  /* Gallery filter buttons */
+  .filter-button {
+    background-color: var(--color-neutral-700);
+    color: var(--color-text-secondary);
+  }
+
+  .filter-button:hover,
+  .filter-button.active {
+    background-color: var(--color-primary-700);
+    color: var(--color-text-inverse);
+  }
+}
+
 /* Global Styles */
 * {
   box-sizing: border-box;
@@ -172,6 +287,7 @@ html {
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
   background-color: var(--color-background);
+  color-scheme: light dark;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
