@@ -425,21 +425,6 @@ const base = import.meta.env.BASE_URL;
     background-color: var(--color-surface);
   }
 
-  /* Dark Mode - System preference fallback */
-  @media (prefers-color-scheme: dark) {
-    html:not([data-theme]) .contact-box {
-      background: var(--color-accent-600);
-    }
-
-    html:not([data-theme]) .contact-btn {
-      background-color: var(--color-neutral-100);
-      color: var(--color-primary-800);
-    }
-
-    html:not([data-theme]) .contact-btn:hover {
-      background-color: var(--color-surface);
-    }
-  }
 </style>
 
 <script>

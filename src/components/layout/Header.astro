@@ -296,69 +296,6 @@ function isActive(href: string) {
     border-bottom-color: var(--color-neutral-700);
   }
 
-  /* Dark Mode - System preference fallback */
-  @media (prefers-color-scheme: dark) {
-    html:not([data-theme]) .header {
-      background-color: var(--color-neutral-800);
-      border-bottom-color: var(--color-neutral-700);
-    }
-
-    html:not([data-theme]) .brand {
-      color: var(--color-text-primary);
-    }
-
-    html:not([data-theme]) .brand:hover {
-      color: var(--color-accent-400);
-    }
-
-    html:not([data-theme]) .theme-toggle {
-      color: var(--color-text-primary);
-    }
-
-    html:not([data-theme]) .theme-toggle:hover {
-      background-color: var(--color-neutral-700);
-    }
-
-    html:not([data-theme]) .mobile-menu-button {
-      color: var(--color-text-primary);
-    }
-
-    html:not([data-theme]) .mobile-menu-button:hover {
-      background-color: var(--color-neutral-700);
-    }
-
-    html:not([data-theme]) .nav-link {
-      color: var(--color-text-secondary);
-    }
-
-    html:not([data-theme]) .nav-link:hover {
-      color: var(--color-text-primary);
-      background-color: var(--color-neutral-700);
-    }
-
-    html:not([data-theme]) .nav-link-active {
-      color: var(--color-accent-400);
-      background-color: var(--color-neutral-700);
-    }
-
-    html:not([data-theme]) .mobile-nav {
-      border-top-color: var(--color-neutral-700);
-    }
-
-    html:not([data-theme]) .mobile-nav-link {
-      color: var(--color-text-secondary);
-    }
-
-    html:not([data-theme]) .mobile-nav-link:hover {
-      color: var(--color-text-primary);
-      background-color: var(--color-neutral-700);
-    }
-
-    html:not([data-theme]) .mobile-nav-link-active {
-      color: var(--color-accent-400);
-      background-color: var(--color-neutral-700);
-    }
-  }
 
   /* Manual dark theme overrides */
   html[data-theme='dark'] .brand {
