@@ -1,0 +1,587 @@
+---
+/**
+ * Booking Request Page
+ * Form for clients to request photography sessions
+ * Uses Web3Forms for email delivery
+ */
+
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Book a Session - Jodi Photography"
+  description="Book your photography session with Jodi Photography. Fill out the form to get started."
+>
+  <div class="book-page">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="header-container">
+        <h1 class="page-title">Book a Session</h1>
+        <p class="page-description">
+          Ready to create beautiful photographs? Fill out the form below and I'll get back to you within 24 hours.
+        </p>
+      </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="form-section">
+      <div class="form-container">
+        <div class="form-wrapper">
+          <form id="booking-form" class="booking-form" novalidate>
+            <!-- Access Key (Hidden) - Replace with actual Web3Forms key -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+
+            <!-- Honeypot for spam protection -->
+            <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" aria-hidden="true">
+
+            <!-- Name -->
+            <div class="form-group">
+              <label for="name" class="form-label">
+                Full Name <span class="required" aria-label="required">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-input"
+                required
+                aria-required="true"
+                aria-describedby="name-error"
+              >
+              <p id="name-error" class="error-message" role="alert" aria-live="polite"></p>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email" class="form-label">
+                Email Address <span class="required" aria-label="required">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input"
+                required
+                aria-required="true"
+                aria-describedby="email-error"
+              >
+              <p id="email-error" class="error-message" role="alert" aria-live="polite"></p>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label for="phone" class="form-label">
+                Phone Number <span class="required" aria-label="required">*</span>
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-input"
+                required
+                aria-required="true"
+                aria-describedby="phone-error"
+              >
+              <p id="phone-error" class="error-message" role="alert" aria-live="polite"></p>
+            </div>
+
+            <!-- Session Type -->
+            <div class="form-group">
+              <label for="session-type" class="form-label">
+                Session Type <span class="required" aria-label="required">*</span>
+              </label>
+              <select
+                id="session-type"
+                name="session_type"
+                class="form-select"
+                required
+                aria-required="true"
+                aria-describedby="session-error"
+              >
+                <option value="">Select a session type</option>
+                <option value="wedding">Wedding Photography</option>
+                <option value="portrait">Portrait Session</option>
+                <option value="event">Event Photography</option>
+                <option value="engagement">Engagement Shoot</option>
+                <option value="family">Family Photos</option>
+                <option value="other">Other</option>
+              </select>
+              <p id="session-error" class="error-message" role="alert" aria-live="polite"></p>
+            </div>
+
+            <!-- Preferred Date -->
+            <div class="form-group">
+              <label for="date" class="form-label">
+                Preferred Date
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="preferred_date"
+                class="form-input"
+                aria-describedby="date-hint"
+              >
+              <p id="date-hint" class="form-hint">If you have a specific date in mind, please let me know.</p>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label for="message" class="form-label">
+                Tell Me About Your Vision <span class="required" aria-label="required">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                class="form-textarea"
+                required
+                aria-required="true"
+                aria-describedby="message-error message-hint"
+              ></textarea>
+              <p id="message-hint" class="form-hint">Share details about what you're looking for, the location, number of people, etc.</p>
+              <p id="message-error" class="error-message" role="alert" aria-live="polite"></p>
+            </div>
+
+            <!-- Privacy Notice -->
+            <div class="privacy-notice">
+              <p>
+                By submitting this form, you agree to our <a href="/legal" class="privacy-link">privacy policy</a>. Your information will only be used to respond to your inquiry.
+              </p>
+            </div>
+
+            <!-- Success/Error Messages -->
+            <div id="form-success" class="success-message hidden" role="alert" aria-live="polite">
+              <svg class="message-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p>Thank you! Your booking request has been sent successfully. I'll be in touch within 24 hours.</p>
+            </div>
+
+            <div id="form-error" class="error-banner hidden" role="alert" aria-live="assertive">
+              <svg class="message-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p>Oops! Something went wrong. Please try again or contact me directly.</p>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submit-btn">
+              <span class="btn-text">Send Booking Request</span>
+              <span class="btn-loading hidden">
+                <svg class="spinner" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+              </span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Info Sidebar -->
+        <div class="info-sidebar">
+          <div class="info-card">
+            <h2 class="info-title">What Happens Next?</h2>
+            <ol class="info-steps">
+              <li>I'll review your request within 24 hours</li>
+              <li>We'll discuss your vision and requirements</li>
+              <li>I'll provide a custom quote and availability</li>
+              <li>Once confirmed, we'll schedule your session</li>
+            </ol>
+          </div>
+
+          <div class="info-card">
+            <h2 class="info-title">Have Questions?</h2>
+            <p class="info-text">
+              If you have questions before booking, feel free to <a href="/contact" class="info-link">contact me directly</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .book-page {
+    background-color: var(--color-background);
+  }
+
+  /* Page Header */
+  .page-header {
+    background: linear-gradient(to bottom, var(--color-neutral-100), var(--color-surface));
+    padding: var(--spacing-16) 0 var(--spacing-12);
+  }
+
+  .header-container {
+    max-width: var(--container-lg);
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-4);
+  }
+
+  .page-description {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Form Section */
+  .form-section {
+    padding: var(--spacing-16) 0;
+  }
+
+  .form-container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    display: grid;
+    gap: var(--spacing-8);
+  }
+
+  .form-wrapper {
+    background-color: var(--color-surface);
+    padding: var(--spacing-8);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-base);
+  }
+
+  /* Form Styles */
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .form-label {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+
+  .required {
+    color: var(--color-error);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: var(--spacing-3);
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-sans);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    border-color: var(--color-border-focus);
+    outline: none;
+  }
+
+  .form-input.error,
+  .form-select.error,
+  .form-textarea.error {
+    border-color: var(--color-error);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-hint {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .error-message {
+    font-size: var(--font-size-sm);
+    color: var(--color-error);
+    margin: 0;
+    min-height: 1.25rem;
+  }
+
+  .error-message:empty {
+    display: none;
+  }
+
+  /* Privacy Notice */
+  .privacy-notice {
+    padding: var(--spacing-4);
+    background-color: var(--color-neutral-50);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .privacy-notice p {
+    margin: 0;
+  }
+
+  .privacy-link {
+    color: var(--color-accent-600);
+    text-decoration: underline;
+  }
+
+  /* Messages */
+  .success-message,
+  .error-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+  }
+
+  .success-message {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+
+  .error-banner {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+
+  .message-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .success-message p,
+  .error-banner p {
+    margin: 0;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  /* Submit Button */
+  .submit-btn {
+    padding: var(--spacing-4) var(--spacing-8);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-inverse);
+    background-color: var(--color-accent-600);
+    border: none;
+    border-radius: var(--radius-lg);
+    transition: background-color var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+  }
+
+  .submit-btn:hover:not(:disabled) {
+    background-color: var(--color-accent-700);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Info Sidebar */
+  .info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+  }
+
+  .info-card {
+    background-color: var(--color-surface);
+    padding: var(--spacing-6);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-base);
+  }
+
+  .info-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-4);
+  }
+
+  .info-steps {
+    margin: 0;
+    padding-left: var(--spacing-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+  }
+
+  .info-steps li {
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  .info-text {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .info-link {
+    color: var(--color-accent-600);
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: var(--font-size-5xl);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .form-container {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Form validation and submission
+  const form = document.getElementById('booking-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = submitBtn?.querySelector('.btn-text');
+  const btnLoading = submitBtn?.querySelector('.btn-loading');
+  const successMessage = document.getElementById('form-success');
+  const errorBanner = document.getElementById('form-error');
+
+  const inputs = {
+    name: document.getElementById('name') as HTMLInputElement,
+    email: document.getElementById('email') as HTMLInputElement,
+    phone: document.getElementById('phone') as HTMLInputElement,
+    sessionType: document.getElementById('session-type') as HTMLSelectElement,
+    message: document.getElementById('message') as HTMLTextAreaElement,
+  };
+
+  // Validation functions
+  function validateField(field: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement): boolean {
+    const errorEl = document.getElementById(`${field.id}-error`);
+    let error = '';
+
+    if (field.hasAttribute('required') && !field.value.trim()) {
+      error = 'This field is required.';
+    } else if (field.type === 'email' && field.value) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(field.value)) {
+        error = 'Please enter a valid email address.';
+      }
+    }
+
+    if (errorEl) {
+      errorEl.textContent = error;
+    }
+
+    if (error) {
+      field.classList.add('error');
+      return false;
+    } else {
+      field.classList.remove('error');
+      return true;
+    }
+  }
+
+  // Add blur validation
+  Object.values(inputs).forEach(input => {
+    input?.addEventListener('blur', () => validateField(input));
+    input?.addEventListener('input', () => {
+      if (input.classList.contains('error')) {
+        validateField(input);
+      }
+    });
+  });
+
+  // Form submission
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validate all fields
+    const validations = Object.values(inputs).map(input => validateField(input));
+    const isValid = validations.every(result => result === true);
+
+    if (!isValid) {
+      // Focus first error
+      const firstError = Object.values(inputs).find(input => input.classList.contains('error'));
+      firstError?.focus();
+      return;
+    }
+
+    // Hide previous messages
+    successMessage?.classList.add('hidden');
+    errorBanner?.classList.add('hidden');
+
+    // Show loading state
+    submitBtn.disabled = true;
+    btnText?.classList.add('hidden');
+    btnLoading?.classList.remove('hidden');
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        successMessage?.classList.remove('hidden');
+        form.reset();
+        // Scroll to success message
+        successMessage?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      errorBanner?.classList.remove('hidden');
+      errorBanner?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } finally {
+      submitBtn.disabled = false;
+      btnText?.classList.remove('hidden');
+      btnLoading?.classList.add('hidden');
+    }
+  });
+</script>

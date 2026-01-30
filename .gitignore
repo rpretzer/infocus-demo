@@ -22,3 +22,24 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Sanity
+.sanity/
+
+# Claude Code
+.claude/
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Editor swap files
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

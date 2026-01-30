@@ -1,17 +1,337 @@
 ---
+/**
+ * Landing Page
+ * Hero section with introduction and featured portfolio highlights
+ */
 
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Jodi Photography - Professional Photography Services"
+  description="Capturing your most cherished moments with professional photography services. Book your session today."
+>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Capturing Life's
+          <span class="hero-accent">Beautiful Moments</span>
+        </h1>
+        <p class="hero-description">
+          Professional photography services for weddings, portraits, events, and more.
+          Every photograph tells a story - let me help you tell yours.
+        </p>
+        <div class="hero-actions">
+          <a href="/gallery" class="btn btn-primary">
+            View Gallery
+          </a>
+          <a href="/book" class="btn btn-secondary">
+            Book a Session
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <!-- Placeholder for hero image -->
+        <div class="hero-image-placeholder" role="img" aria-label="Professional photography showcase">
+          <svg class="placeholder-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <p class="placeholder-text">Professional Photography</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="services">
+    <div class="services-container">
+      <h2 class="section-title">Photography Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="service-title">Weddings</h3>
+          <p class="service-description">
+            Capture every precious moment of your special day with elegant, timeless photography.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <h3 class="service-title">Portraits</h3>
+          <p class="service-description">
+            Professional portraits that showcase your personality and style.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" aria-hidden="true">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h3 class="service-title">Events</h3>
+          <p class="service-description">
+            From corporate events to family celebrations, professional coverage for any occasion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <div class="cta-container">
+      <h2 class="cta-title">Ready to Book Your Session?</h2>
+      <p class="cta-description">
+        Let's create beautiful memories together. Get in touch to discuss your photography needs.
+      </p>
+      <a href="/book" class="btn btn-primary-inverse">
+        Book Now
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(to bottom, var(--color-neutral-50), var(--color-surface));
+    padding: var(--spacing-16) 0;
+  }
+
+  .hero-container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    display: grid;
+    gap: var(--spacing-12);
+    align-items: center;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-6);
+  }
+
+  .hero-accent {
+    display: block;
+    color: var(--color-accent-600);
+  }
+
+  .hero-description {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-8);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-4);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-image-placeholder {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-neutral-100);
+    border-radius: var(--radius-2xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-4);
+    color: var(--color-neutral-400);
+  }
+
+  .placeholder-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .placeholder-text {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    margin: 0;
+  }
+
+  /* Services Section */
+  .services {
+    padding: var(--spacing-20) 0;
+    background-color: var(--color-surface);
+  }
+
+  .services-container {
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+  }
+
+  .section-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-12);
+  }
+
+  .services-grid {
+    display: grid;
+    gap: var(--spacing-8);
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    text-align: center;
+    padding: var(--spacing-8);
+    background-color: var(--color-neutral-50);
+    border-radius: var(--radius-xl);
+    transition: transform var(--transition-base);
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .service-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto var(--spacing-4);
+    color: var(--color-accent-600);
+  }
+
+  .service-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .service-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-3);
+  }
+
+  .service-description {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Call to Action Section */
+  .cta {
+    padding: var(--spacing-20) 0;
+    background-color: var(--color-accent-600);
+    color: var(--color-text-inverse);
+  }
+
+  .cta-container {
+    max-width: var(--container-md);
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 var(--spacing-4);
+  }
+
+  .cta-description {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    margin: 0 0 var(--spacing-8);
+    opacity: 0.95;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+  }
+
+  .btn-primary {
+    background-color: var(--color-accent-600);
+    color: var(--color-text-inverse);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-accent-700);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-accent-600);
+    border-color: var(--color-accent-600);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-accent-50);
+  }
+
+  .btn-primary-inverse {
+    background-color: var(--color-surface);
+    color: var(--color-accent-600);
+  }
+
+  .btn-primary-inverse:hover {
+    background-color: var(--color-neutral-100);
+  }
+
+  /* Responsive */
+  @media (min-width: 768px) {
+    .hero-container {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-actions {
+      justify-content: flex-start;
+    }
+
+    .hero-title {
+      font-size: var(--font-size-5xl);
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

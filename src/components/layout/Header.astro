@@ -1,0 +1,286 @@
+---
+/**
+ * Header Component
+ * Main site navigation with mobile menu support
+ * Fully keyboard accessible with ARIA labels
+ */
+
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/gallery', label: 'Gallery' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/book', label: 'Book a Session' },
+  { href: '/legal', label: 'Legal' }
+];
+
+function isActive(href: string) {
+  if (href === '/') {
+    return currentPath === '/';
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="header">
+  <div class="header-container">
+    <div class="header-content">
+      <!-- Logo/Brand -->
+      <a href="/" class="brand" aria-label="Jodi Photography Home">
+        <span class="brand-text">Jodi Photography</span>
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button
+        type="button"
+        class="mobile-menu-button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Toggle navigation menu"
+        id="mobile-menu-button"
+      >
+        <span class="sr-only">Open menu</span>
+        <svg class="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg class="close-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`nav-link ${isActive(item.href) ? 'nav-link-active' : ''}`}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav hidden" id="mobile-menu" aria-label="Mobile navigation">
+      <ul class="mobile-nav-list">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`mobile-nav-link ${isActive(item.href) ? 'mobile-nav-link-active' : ''}`}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+  }
+
+  .header-container {
+    max-width: var(--container-2xl);
+    margin: 0 auto;
+    padding: 0 var(--spacing-4);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+  }
+
+  /* Brand/Logo */
+  .brand {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .brand:hover {
+    color: var(--color-accent-600);
+  }
+
+  .brand-text {
+    display: inline-block;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2);
+    background: transparent;
+    border: none;
+    color: var(--color-text-primary);
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-fast);
+  }
+
+  .mobile-menu-button:hover {
+    background-color: var(--color-neutral-100);
+  }
+
+  .menu-icon,
+  .close-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  /* Desktop Navigation */
+  .desktop-nav {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: var(--spacing-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-link {
+    display: inline-block;
+    padding: var(--spacing-2) var(--spacing-4);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-neutral-100);
+  }
+
+  .nav-link-active {
+    color: var(--color-accent-600);
+    background-color: var(--color-accent-50);
+  }
+
+  /* Mobile Navigation */
+  .mobile-nav {
+    padding: var(--spacing-4) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: var(--spacing-3) var(--spacing-4);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-neutral-100);
+  }
+
+  .mobile-nav-link-active {
+    color: var(--color-accent-600);
+    background-color: var(--color-accent-50);
+  }
+
+  /* Tablet and up */
+  @media (min-width: 768px) {
+    .mobile-menu-button {
+      display: none;
+    }
+
+    .desktop-nav {
+      display: block;
+    }
+
+    .mobile-nav {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle functionality
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+
+      // Toggle aria-expanded
+      mobileMenuButton.setAttribute('aria-expanded', String(!isExpanded));
+
+      // Toggle menu visibility
+      mobileMenu.classList.toggle('hidden');
+
+      // Toggle icons
+      const menuIcon = mobileMenuButton.querySelector('.menu-icon');
+      const closeIcon = mobileMenuButton.querySelector('.close-icon');
+
+      if (menuIcon && closeIcon) {
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (!mobileMenuButton.contains(target) && !mobileMenu.contains(target)) {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          mobileMenuButton.click();
+        }
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          mobileMenuButton.click();
+          mobileMenuButton.focus();
+        }
+      }
+    });
+  }
+</script>
