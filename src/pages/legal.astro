@@ -196,7 +196,7 @@ const base = import.meta.env.BASE_URL;
             <p class="contact-text">
               If you have questions about our legal policies or need clarification on any terms, please don't hesitate to reach out.
             </p>
-            <a href={`${base}contact/`} class="contact-btn">
+            <a href={`${base}/contact`} class="contact-btn">
               Contact Us
             </a>
           </aside>
@@ -213,7 +213,7 @@ const base = import.meta.env.BASE_URL;
 
   /* Page Header */
   .page-header {
-    background: linear-gradient(to bottom, var(--color-neutral-100), var(--color-surface));
+    background: var(--color-primary-50);
     padding: var(--spacing-16) 0 var(--spacing-12);
   }
 
@@ -363,7 +363,7 @@ const base = import.meta.env.BASE_URL;
 
   /* Contact Box */
   .contact-box {
-    background: linear-gradient(135deg, var(--color-accent-600), var(--color-accent-700));
+    background: var(--color-accent-600);
     color: var(--color-text-inverse);
     padding: var(--spacing-8);
     border-radius: var(--radius-xl);

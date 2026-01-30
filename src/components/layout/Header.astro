@@ -9,11 +9,11 @@ const currentPath = Astro.url.pathname;
 const base = import.meta.env.BASE_URL;
 
 const navItems = [
-  { href: `${base}`, label: 'Home' },
-  { href: `${base}gallery/`, label: 'Gallery' },
-  { href: `${base}contact/`, label: 'Contact' },
-  { href: `${base}book/`, label: 'Book a Session' },
-  { href: `${base}legal/`, label: 'Legal' }
+  { href: base, label: 'Home' },
+  { href: `${base}/gallery`, label: 'Gallery' },
+  { href: `${base}/contact`, label: 'Contact' },
+  { href: `${base}/book`, label: 'Book a Session' },
+  { href: `${base}/legal`, label: 'Legal' }
 ];
 
 function isActive(href: string) {
