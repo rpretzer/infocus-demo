@@ -357,4 +357,4 @@ Copyright © 2026 Jodi Photography. All rights reserved.
 
 For questions or support, please contact:
 - Developer: RSP Management Solutions
-- Business: hello@jodiphotography.com
+- Business: ifwjodi@gmail.com

@@ -32,13 +32,13 @@ export default defineType({
       title: 'Contact Email',
       type: 'string',
       validation: (Rule) => Rule.email(),
-      initialValue: 'hello@jodiphotography.com',
+      initialValue: 'ifwjodi@gmail.com',
     }),
     defineField({
       name: 'contactPhone',
       title: 'Contact Phone',
       type: 'string',
-      initialValue: '(555) 555-1234',
+      initialValue: '(216) 570-9811',
     }),
     defineField({
       name: 'socialLinks',
