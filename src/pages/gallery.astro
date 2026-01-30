@@ -9,15 +9,93 @@ import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL;
 
-// Placeholder gallery items
+// Demo gallery items with stock photography
 // These will be replaced with Sanity data later
-const placeholderImages = [
-  { id: 1, title: 'Wedding Photography', category: 'Weddings', alt: 'Beautiful wedding ceremony moment' },
-  { id: 2, title: 'Portrait Session', category: 'Portraits', alt: 'Professional portrait photograph' },
-  { id: 3, title: 'Family Event', category: 'Events', alt: 'Joyful family gathering' },
-  { id: 4, title: 'Engagement Shoot', category: 'Weddings', alt: 'Romantic engagement photograph' },
-  { id: 5, title: 'Corporate Headshot', category: 'Portraits', alt: 'Professional business portrait' },
-  { id: 6, title: 'Birthday Celebration', category: 'Events', alt: 'Birthday party photography' },
+const demoImages = [
+  {
+    id: 1,
+    title: 'Wedding Ceremony',
+    category: 'Weddings',
+    alt: 'Beautiful wedding ceremony moment',
+    imageUrl: 'https://picsum.photos/seed/wedding1/800/600'
+  },
+  {
+    id: 2,
+    title: 'Bridal Portrait',
+    category: 'Weddings',
+    alt: 'Elegant bridal portrait',
+    imageUrl: 'https://picsum.photos/seed/wedding2/800/600'
+  },
+  {
+    id: 3,
+    title: 'Professional Headshot',
+    category: 'Portraits',
+    alt: 'Professional business portrait',
+    imageUrl: 'https://picsum.photos/seed/portrait1/800/600'
+  },
+  {
+    id: 4,
+    title: 'Family Portrait',
+    category: 'Portraits',
+    alt: 'Warm family portrait session',
+    imageUrl: 'https://picsum.photos/seed/portrait2/800/600'
+  },
+  {
+    id: 5,
+    title: 'Senior Portrait',
+    category: 'Portraits',
+    alt: 'High school senior portrait',
+    imageUrl: 'https://picsum.photos/seed/portrait3/800/600'
+  },
+  {
+    id: 6,
+    title: 'Birthday Celebration',
+    category: 'Events',
+    alt: 'Joyful birthday party moment',
+    imageUrl: 'https://picsum.photos/seed/event1/800/600'
+  },
+  {
+    id: 7,
+    title: 'Corporate Event',
+    category: 'Events',
+    alt: 'Professional corporate gathering',
+    imageUrl: 'https://picsum.photos/seed/event2/800/600'
+  },
+  {
+    id: 8,
+    title: 'Engagement Session',
+    category: 'Weddings',
+    alt: 'Romantic engagement photography',
+    imageUrl: 'https://picsum.photos/seed/wedding3/800/600'
+  },
+  {
+    id: 9,
+    title: 'Reception Details',
+    category: 'Weddings',
+    alt: 'Wedding reception decoration',
+    imageUrl: 'https://picsum.photos/seed/wedding4/800/600'
+  },
+  {
+    id: 10,
+    title: 'Graduation Event',
+    category: 'Events',
+    alt: 'Graduation ceremony photography',
+    imageUrl: 'https://picsum.photos/seed/event3/800/600'
+  },
+  {
+    id: 11,
+    title: 'Creative Portrait',
+    category: 'Portraits',
+    alt: 'Artistic portrait session',
+    imageUrl: 'https://picsum.photos/seed/portrait4/800/600'
+  },
+  {
+    id: 12,
+    title: 'Anniversary Celebration',
+    category: 'Events',
+    alt: 'Anniversary party photography',
+    imageUrl: 'https://picsum.photos/seed/event4/800/600'
+  },
 ];
 ---
 
@@ -61,16 +139,15 @@ const placeholderImages = [
     <section class="gallery-section">
       <div class="gallery-container">
         <div class="gallery-grid" id="gallery-grid">
-          {placeholderImages.map((image) => (
+          {demoImages.map((image) => (
             <article class="gallery-item" data-category={image.category}>
               <div class="image-wrapper">
-                <!-- Placeholder image -->
-                <div class="image-placeholder" role="img" aria-label={image.alt}>
-                  <svg class="placeholder-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <p class="placeholder-label">{image.title}</p>
-                </div>
+                <img
+                  src={image.imageUrl}
+                  alt={image.alt}
+                  class="gallery-image"
+                  loading="lazy"
+                />
               </div>
               <div class="item-info">
                 <h3 class="item-title">{image.title}</h3>
@@ -219,28 +296,20 @@ const placeholderImages = [
     position: relative;
     width: 100%;
     overflow: hidden;
-  }
-
-  .image-placeholder {
     aspect-ratio: 4 / 3;
     background-color: var(--color-neutral-100);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-3);
-    color: var(--color-neutral-400);
   }
 
-  .placeholder-icon {
-    width: 3rem;
-    height: 3rem;
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-base);
   }
 
-  .placeholder-label {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-medium);
-    margin: 0;
+  .gallery-item:hover .gallery-image {
+    transform: scale(1.05);
   }
 
   .item-info {
