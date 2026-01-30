@@ -5,6 +5,8 @@
  */
 
 import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -24,10 +26,10 @@ import Layout from '../layouts/Layout.astro';
           Every photograph tells a story - let me help you tell yours.
         </p>
         <div class="hero-actions">
-          <a href="/gallery" class="btn btn-primary">
+          <a href={`${base}gallery`} class="btn btn-primary">
             View Gallery
           </a>
-          <a href="/book" class="btn btn-secondary">
+          <a href={`${base}book`} class="btn btn-secondary">
             Book a Session
           </a>
         </div>
@@ -96,7 +98,7 @@ import Layout from '../layouts/Layout.astro';
       <p class="cta-description">
         Let's create beautiful memories together. Get in touch to discuss your photography needs.
       </p>
-      <a href="/book" class="btn btn-primary-inverse">
+      <a href={`${base}book`} class="btn btn-primary-inverse">
         Book Now
       </a>
     </div>
