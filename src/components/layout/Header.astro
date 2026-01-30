@@ -264,68 +264,131 @@ function isActive(href: string) {
     background-color: var(--color-accent-50);
   }
 
-  /* Dark Mode */
+  /* Dark Mode - Manual override */
+  html[data-theme='dark'] .header {
+    background-color: var(--color-neutral-800);
+    border-bottom-color: var(--color-neutral-700);
+  }
+
+  /* Dark Mode - System preference fallback */
   @media (prefers-color-scheme: dark) {
-    .header {
+    html:not([data-theme]) .header {
       background-color: var(--color-neutral-800);
       border-bottom-color: var(--color-neutral-700);
     }
 
-    .brand {
+    html:not([data-theme]) .brand {
       color: var(--color-text-primary);
     }
 
-    .brand:hover {
+    html:not([data-theme]) .brand:hover {
       color: var(--color-accent-400);
     }
 
-    .theme-toggle {
+    html:not([data-theme]) .theme-toggle {
       color: var(--color-text-primary);
     }
 
-    .theme-toggle:hover {
+    html:not([data-theme]) .theme-toggle:hover {
       background-color: var(--color-neutral-700);
     }
 
-    .mobile-menu-button {
+    html:not([data-theme]) .mobile-menu-button {
       color: var(--color-text-primary);
     }
 
-    .mobile-menu-button:hover {
+    html:not([data-theme]) .mobile-menu-button:hover {
       background-color: var(--color-neutral-700);
     }
 
-    .nav-link {
+    html:not([data-theme]) .nav-link {
       color: var(--color-text-secondary);
     }
 
-    .nav-link:hover {
+    html:not([data-theme]) .nav-link:hover {
       color: var(--color-text-primary);
       background-color: var(--color-neutral-700);
     }
 
-    .nav-link-active {
+    html:not([data-theme]) .nav-link-active {
       color: var(--color-accent-400);
       background-color: var(--color-neutral-700);
     }
 
-    .mobile-nav {
+    html:not([data-theme]) .mobile-nav {
       border-top-color: var(--color-neutral-700);
     }
 
-    .mobile-nav-link {
+    html:not([data-theme]) .mobile-nav-link {
       color: var(--color-text-secondary);
     }
 
-    .mobile-nav-link:hover {
+    html:not([data-theme]) .mobile-nav-link:hover {
       color: var(--color-text-primary);
       background-color: var(--color-neutral-700);
     }
 
-    .mobile-nav-link-active {
+    html:not([data-theme]) .mobile-nav-link-active {
       color: var(--color-accent-400);
       background-color: var(--color-neutral-700);
     }
+  }
+
+  /* Manual dark theme overrides */
+  html[data-theme='dark'] .brand {
+    color: var(--color-text-primary);
+  }
+
+  html[data-theme='dark'] .brand:hover {
+    color: var(--color-accent-400);
+  }
+
+  html[data-theme='dark'] .theme-toggle {
+    color: var(--color-text-primary);
+  }
+
+  html[data-theme='dark'] .theme-toggle:hover {
+    background-color: var(--color-neutral-700);
+  }
+
+  html[data-theme='dark'] .mobile-menu-button {
+    color: var(--color-text-primary);
+  }
+
+  html[data-theme='dark'] .mobile-menu-button:hover {
+    background-color: var(--color-neutral-700);
+  }
+
+  html[data-theme='dark'] .nav-link {
+    color: var(--color-text-secondary);
+  }
+
+  html[data-theme='dark'] .nav-link:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-neutral-700);
+  }
+
+  html[data-theme='dark'] .nav-link-active {
+    color: var(--color-accent-400);
+    background-color: var(--color-neutral-700);
+  }
+
+  html[data-theme='dark'] .mobile-nav {
+    border-top-color: var(--color-neutral-700);
+  }
+
+  html[data-theme='dark'] .mobile-nav-link {
+    color: var(--color-text-secondary);
+  }
+
+  html[data-theme='dark'] .mobile-nav-link:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-neutral-700);
+  }
+
+  html[data-theme='dark'] .mobile-nav-link-active {
+    color: var(--color-accent-400);
+    background-color: var(--color-neutral-700);
   }
 
   /* Tablet and up */
