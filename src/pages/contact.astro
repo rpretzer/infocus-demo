@@ -410,4 +410,28 @@ const base = import.meta.env.BASE_URL;
       grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    .social-link {
+      color: var(--color-text-primary);
+    }
+
+    .social-link:hover {
+      background-color: var(--color-neutral-600);
+      color: var(--color-text-primary);
+    }
+
+    .cta-title {
+      color: var(--color-text-inverse);
+    }
+
+    .cta-description {
+      color: var(--color-text-inverse);
+    }
+
+    .btn-primary {
+      color: #ffffff;
+    }
+  }
 </style>
