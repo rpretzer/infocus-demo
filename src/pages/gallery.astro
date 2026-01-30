@@ -345,9 +345,9 @@ const demoImages = [
   }
 
   .filter-btn-active {
-    background-color: var(--color-accent-600);
+    background-color: var(--color-primary-600);
     color: #ffffff;
-    border-color: var(--color-accent-600);
+    border-color: var(--color-primary-600);
   }
 
   /* Gallery Section */
@@ -394,7 +394,7 @@ const demoImages = [
   }
 
   .image-button:focus-visible {
-    outline: 3px solid var(--color-accent-600);
+    outline: 3px solid var(--color-primary-600);
     outline-offset: 4px;
   }
 
@@ -478,12 +478,12 @@ const demoImages = [
   }
 
   .btn-primary {
-    background-color: var(--color-accent-600);
+    background-color: var(--color-primary-600);
     color: var(--color-text-inverse);
   }
 
   .btn-primary:hover {
-    background-color: var(--color-accent-700);
+    background-color: var(--color-primary-700);
   }
 
   /* Lightbox */
@@ -646,38 +646,36 @@ const demoImages = [
     }
   }
 
-  /* Dark Mode */
-  @media (prefers-color-scheme: dark) {
-    .filter-btn {
-      background-color: var(--color-neutral-700) !important;
-      color: var(--color-neutral-300) !important;
-      border-color: var(--color-neutral-600) !important;
-    }
+  /* Dark Mode - Manual override via data-theme attribute */
+  html[data-theme='dark'] .filter-btn {
+    background-color: var(--color-neutral-700) !important;
+    color: var(--color-neutral-300) !important;
+    border-color: var(--color-neutral-600) !important;
+  }
 
-    .filter-btn:hover {
-      background-color: var(--color-neutral-600) !important;
-      color: var(--color-neutral-50) !important;
-      border-color: var(--color-neutral-500) !important;
-    }
+  html[data-theme='dark'] .filter-btn:hover {
+    background-color: var(--color-neutral-600) !important;
+    color: var(--color-neutral-50) !important;
+    border-color: var(--color-neutral-500) !important;
+  }
 
-    .filter-btn-active,
-    .filter-btn[aria-pressed="true"] {
-      background-color: var(--color-accent-600) !important;
-      color: #ffffff !important;
-      border-color: var(--color-accent-600) !important;
-    }
+  html[data-theme='dark'] .filter-btn-active,
+  html[data-theme='dark'] .filter-btn[aria-pressed="true"] {
+    background-color: var(--color-primary-600) !important;
+    color: #ffffff !important;
+    border-color: var(--color-primary-600) !important;
+  }
 
-    .cta-title {
-      color: var(--color-text-inverse);
-    }
+  html[data-theme='dark'] .cta-title {
+    color: var(--color-text-inverse);
+  }
 
-    .cta-description {
-      color: var(--color-text-inverse);
-    }
+  html[data-theme='dark'] .cta-description {
+    color: var(--color-text-inverse);
+  }
 
-    .btn-primary {
-      color: #ffffff;
-    }
+  html[data-theme='dark'] .btn-primary {
+    color: #ffffff;
   }
 </style>
 

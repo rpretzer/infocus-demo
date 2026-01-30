@@ -234,11 +234,11 @@ const base = import.meta.env.BASE_URL;
     margin: 0;
   }
 
-  /* Call to Action Section - Concert energy */
+  /* Call to Action Section - Soft, inviting */
   .cta {
     padding: var(--spacing-20) 0;
-    background-color: var(--color-primary-700); /* Deep teal energy */
-    color: var(--color-text-inverse);
+    background-color: var(--color-primary-100); /* Light teal wash */
+    color: var(--color-text-primary);
   }
 
   .cta-container {
@@ -251,14 +251,15 @@ const base = import.meta.env.BASE_URL;
   .cta-title {
     font-size: var(--font-size-3xl);
     font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
     margin: 0 0 var(--spacing-4);
   }
 
   .cta-description {
     font-size: var(--font-size-lg);
     line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
     margin: 0 0 var(--spacing-8);
-    opacity: 0.95;
   }
 
   /* Buttons - Organic, flowing shapes */
@@ -274,12 +275,12 @@ const base = import.meta.env.BASE_URL;
   }
 
   .btn-primary {
-    background-color: var(--color-accent-600); /* Warm coral */
+    background-color: var(--color-primary-600); /* Deep teal */
     color: var(--color-text-inverse);
   }
 
   .btn-primary:hover {
-    background-color: var(--color-accent-700);
+    background-color: var(--color-primary-700);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
@@ -296,50 +297,50 @@ const base = import.meta.env.BASE_URL;
   }
 
   .btn-primary-inverse {
-    background-color: var(--color-surface);
-    color: var(--color-accent-600);
-    border-color: var(--color-surface);
+    background-color: var(--color-primary-600);
+    color: var(--color-text-inverse);
+    border-color: var(--color-primary-600);
   }
 
   .btn-primary-inverse:hover {
-    background-color: var(--color-accent-50);
+    background-color: var(--color-primary-700);
     transform: translateY(-2px);
   }
 
-  /* Dark Mode Fixes */
-  @media (prefers-color-scheme: dark) {
-    .cta {
-      background-color: var(--color-primary-700);
-    }
+  /* Dark Mode - Manual override via data-theme attribute */
+  html[data-theme='dark'] .cta {
+    background-color: var(--color-primary-800);
+    color: var(--color-text-inverse);
+  }
 
-    .cta-title {
-      color: var(--color-text-inverse);
-    }
+  html[data-theme='dark'] .cta-title {
+    color: var(--color-text-inverse);
+  }
 
-    .cta-description {
-      color: var(--color-text-inverse);
-    }
+  html[data-theme='dark'] .cta-description {
+    color: var(--color-text-inverse);
+    opacity: 0.9;
+  }
 
-    .btn-secondary {
-      color: var(--color-primary-300);
-      border-color: var(--color-primary-400);
-      background-color: transparent;
-    }
+  html[data-theme='dark'] .btn-secondary {
+    color: var(--color-primary-300);
+    border-color: var(--color-primary-400);
+    background-color: transparent;
+  }
 
-    .btn-secondary:hover {
-      background-color: var(--color-primary-700);
-      border-color: var(--color-primary-300);
-      color: var(--color-text-inverse);
-    }
+  html[data-theme='dark'] .btn-secondary:hover {
+    background-color: var(--color-primary-700);
+    border-color: var(--color-primary-300);
+    color: var(--color-text-inverse);
+  }
 
-    .btn-primary-inverse {
-      background-color: var(--color-neutral-100);
-      color: var(--color-primary-800);
-    }
+  html[data-theme='dark'] .btn-primary-inverse {
+    background-color: var(--color-neutral-100);
+    color: var(--color-primary-800);
+  }
 
-    .btn-primary-inverse:hover {
-      background-color: var(--color-surface);
-    }
+  html[data-theme='dark'] .btn-primary-inverse:hover {
+    background-color: var(--color-surface);
   }
 
   /* Responsive */
