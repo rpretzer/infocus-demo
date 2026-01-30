@@ -86,37 +86,74 @@ const demoImages = [
     imageUrl: 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop'
   },
 
-  // Events Category
+  // Concerts Category - Rock and Roll!
   {
     id: 11,
+    title: 'Live Performance',
+    category: 'Concerts',
+    alt: 'Band performing live on stage with dramatic lighting',
+    imageUrl: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800&h=600&fit=crop'
+  },
+  {
+    id: 12,
+    title: 'Rock Concert Energy',
+    category: 'Concerts',
+    alt: 'Energetic rock concert with crowd',
+    imageUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&h=600&fit=crop'
+  },
+  {
+    id: 13,
+    title: 'Band Promo Shot',
+    category: 'Concerts',
+    alt: 'Professional band promotional photography',
+    imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop'
+  },
+  {
+    id: 14,
+    title: 'Intimate Club Show',
+    category: 'Concerts',
+    alt: 'Live music in intimate club venue',
+    imageUrl: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop'
+  },
+  {
+    id: 15,
+    title: 'Guitarist in Action',
+    category: 'Concerts',
+    alt: 'Guitarist performing on stage',
+    imageUrl: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&h=600&fit=crop'
+  },
+
+  // Events Category
+  {
+    id: 16,
     title: 'Birthday Celebration',
     category: 'Events',
     alt: 'Birthday party with cake and candles',
     imageUrl: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop'
   },
   {
-    id: 12,
+    id: 17,
     title: 'Corporate Event',
     category: 'Events',
     alt: 'Professional business conference',
     imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop'
   },
   {
-    id: 13,
+    id: 18,
     title: 'Graduation Ceremony',
     category: 'Events',
     alt: 'Graduate in cap and gown',
     imageUrl: 'https://images.unsplash.com/photo-1627556704353-43c2e5a62814?w=800&h=600&fit=crop'
   },
   {
-    id: 14,
+    id: 19,
     title: 'Anniversary Party',
     category: 'Events',
     alt: 'Anniversary celebration with family',
     imageUrl: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop'
   },
   {
-    id: 15,
+    id: 20,
     title: 'Bar/Bat Mitzvah',
     category: 'Events',
     alt: 'Jewish coming of age celebration',
@@ -153,6 +190,9 @@ const demoImages = [
           </button>
           <button class="filter-btn" data-filter="Portraits" aria-pressed="false">
             Portraits
+          </button>
+          <button class="filter-btn" data-filter="Concerts" aria-pressed="false">
+            Concerts
           </button>
           <button class="filter-btn" data-filter="Events" aria-pressed="false">
             Events
@@ -754,34 +794,69 @@ const demoImages = [
     },
     {
       id: 11,
+      title: 'Live Performance',
+      category: 'Concerts',
+      alt: 'Band performing live on stage with dramatic lighting',
+      imageUrl: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=1200&h=900&fit=crop'
+    },
+    {
+      id: 12,
+      title: 'Rock Concert Energy',
+      category: 'Concerts',
+      alt: 'Energetic rock concert with crowd',
+      imageUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200&h=900&fit=crop'
+    },
+    {
+      id: 13,
+      title: 'Band Promo Shot',
+      category: 'Concerts',
+      alt: 'Professional band promotional photography',
+      imageUrl: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=900&fit=crop'
+    },
+    {
+      id: 14,
+      title: 'Intimate Club Show',
+      category: 'Concerts',
+      alt: 'Live music in intimate club venue',
+      imageUrl: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&h=900&fit=crop'
+    },
+    {
+      id: 15,
+      title: 'Guitarist in Action',
+      category: 'Concerts',
+      alt: 'Guitarist performing on stage',
+      imageUrl: 'https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1200&h=900&fit=crop'
+    },
+    {
+      id: 16,
       title: 'Birthday Celebration',
       category: 'Events',
       alt: 'Birthday party with cake and candles',
       imageUrl: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1200&h=900&fit=crop'
     },
     {
-      id: 12,
+      id: 17,
       title: 'Corporate Event',
       category: 'Events',
       alt: 'Professional business conference',
       imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=900&fit=crop'
     },
     {
-      id: 13,
+      id: 18,
       title: 'Graduation Ceremony',
       category: 'Events',
       alt: 'Graduate in cap and gown',
       imageUrl: 'https://images.unsplash.com/photo-1627556704353-43c2e5a62814?w=1200&h=900&fit=crop'
     },
     {
-      id: 14,
+      id: 19,
       title: 'Anniversary Party',
       category: 'Events',
       alt: 'Anniversary celebration with family',
       imageUrl: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&h=900&fit=crop'
     },
     {
-      id: 15,
+      id: 20,
       title: 'Bar/Bat Mitzvah',
       category: 'Events',
       alt: 'Jewish coming of age celebration',
