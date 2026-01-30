@@ -233,8 +233,8 @@ Yes! Sanity CMS is user-friendly, like WordPress. Training included.
 
 **Contact:** RSP Management Solutions
 - Website: https://consulting.rspmgmt.com
-- Email: [to be added]
-- Phone: [to be added]
+- Email: rpretzer@gmail.com
+- Phone: (440) 650-7414
 
 ---
 
